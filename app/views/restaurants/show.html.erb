@@ -1,0 +1,5 @@
+<strong><%= @restaurant.name %></strong> 
+<span> ---- </span>
+<%= @restaurant.description %> <h5><%= link_to("Edit #{@restaurant.name}", {:action => 'edit'}) %></h5>
+
+<h4><%= link_to("List of Restaurants", {:action => 'index'}) %></h4>

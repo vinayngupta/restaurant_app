@@ -1,0 +1,22 @@
+<h1>Edit a Restaurant</h1><br />
+
+<strong><%= @restaurant.name %></strong> 
+<span> ---- </span>
+<%= @restaurant.description %> <br />
+
+
+<%= form_for @restaurant do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name, placeholder: 'Restaurant name' %>
+  </p>
+ 
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_area :description, placeholder: 'Restaurant description' %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
