@@ -1,6 +1,13 @@
 <strong><%= @restaurant.name %></strong> 
 <span> ---- </span>
-<%= @restaurant.description %> <h5><%= link_to("Edit #{@restaurant.name}", {:action => 'edit'}) %></h5>
+  <%= @restaurant.description %>
+
+
+<div class='ratings'>
+  <%= @restaurant.reviews.average(:rating) %>
+</div>
+
+<h5><%= link_to("Edit #{@restaurant.name}", {:action => 'edit'}) %></h5>
 
 <h4><%= link_to("List of Restaurants", {:action => 'index'}) %></h4>
 
@@ -11,9 +18,10 @@
   </p>
  
   <p>
-  	<% 1.upto(5) do |n| %>
-	    <%= f.label :rating, n, value: n %><br>
-	    <%= f.radio_button :rating, n %>
+  	 <% 1.upto(5) do |n| %>
+	   <%= f.label :rating, n, value: n %>
+	   <%= f.radio_button :rating, n %>
+     <br />
     <% end %>
   </p>
  
@@ -21,9 +29,11 @@
 <% end %>
 <div id="reviews">
    <% @restaurant.reviews.each do |review| %>
-
-   <p><%= review.body %></p>
-	<%= stars_for_rating review.rating %>   
+   <p>
+   <%= review.body %>
+	<%= stars_for_rating review.rating %></p>
 <% end %>
 </div>
+
+
 

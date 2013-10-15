@@ -12,7 +12,7 @@ window.append_review =  (body,rating)->
   $('#reviews').append($('<p>', {text: body}))
   num = rating
   while num--
-	  $('#reviews').append($('<img>', {width: 30, height: 30, src: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS2wtnUBj9EjZ5ITfdpF-URESuG-aBkP-0_bT6cW0qPTCkvYWoE'}))
+	  $('#reviews').append($('<img>', {width: 20, height: 20, src: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS2wtnUBj9EjZ5ITfdpF-URESuG-aBkP-0_bT6cW0qPTCkvYWoE'}))
 
 # '<a href="'+review.href+'" >'+review.body+'</a>'
 # $('<a>', {href: review.href, text:review.body})

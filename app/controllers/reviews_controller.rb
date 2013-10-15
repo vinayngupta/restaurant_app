@@ -8,4 +8,6 @@ class ReviewsController < ApplicationController
 		redirect_to @restaurant
 	end
 
+	
+
 end
