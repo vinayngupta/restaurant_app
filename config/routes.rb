@@ -1,7 +1,15 @@
 RestaurantApp::Application.routes.draw do
+  
+
   #get "restaurants/index"
   #get "restaurants/new"
-  resources :restaurants
+  resources :restaurants do
+    #POST /restaurants/:id/reviews
+    resources :reviews
+  end
+
+  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

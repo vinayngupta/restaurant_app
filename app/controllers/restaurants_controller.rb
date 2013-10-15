@@ -9,7 +9,7 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-  	@restaurant = Restaurant.new(params[:restaurant].permit(:name, :description))
+  	@restaurant = Restaurant.new(restaurant_params)
   	@restaurant.save
 
   	redirect_to @restaurant #this is long version - restaurant_path(@restaurant.id) 
@@ -21,11 +21,20 @@ class RestaurantsController < ApplicationController
 
   def edit
     @restaurant = Restaurant.find(params[:id])
-    @restaurant_edited = @restaurant.save
   end
 
   def update
-    redirect_to restaurant_path
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.update(restaurant_params)
+    if @restaurant.save
+      redirect_to restaurants_path
+    else
+      render 'edit'
+    end
   end
 
+  private
+    def restaurant_params
+        params.require(:restaurant).permit(:name, :description)
+    end
 end

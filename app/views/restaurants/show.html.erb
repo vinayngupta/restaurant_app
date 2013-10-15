@@ -3,3 +3,27 @@
 <%= @restaurant.description %> <h5><%= link_to("Edit #{@restaurant.name}", {:action => 'edit'}) %></h5>
 
 <h4><%= link_to("List of Restaurants", {:action => 'index'}) %></h4>
+
+<%= form_for [@restaurant, Review.new] do |f| %>
+  <p>
+    <%= f.label :body, 'Review' %><br>
+    <%= f.text_area :body, placeholder: 'Review name', :size => '30x10' %>
+  </p>
+ 
+  <p>
+  	<% 1.upto(5) do |n| %>
+	    <%= f.label :rating, n, value: n %><br>
+	    <%= f.radio_button :rating, n %>
+    <% end %>
+  </p>
+ 
+    <%= f.submit 'Add Review' %>
+<% end %>
+<div id="reviews">
+   <% @restaurant.reviews.each do |review| %>
+
+   <p><%= review.body %></p>
+	<%= stars_for_rating review.rating %>   
+<% end %>
+</div>
+
